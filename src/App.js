@@ -37,6 +37,15 @@ function App() {
     })
   }
 
+  const deleteHandaler = (expenseId) => {
+    setNewExpense((prevExpense) => {
+      const updatedExpense = prevExpense.filter(
+        (expense) => expense.id !== expenseId
+      );
+      return updatedExpense;
+    });
+  };
+
 
   // return React.createElement(
   //   "div",
@@ -49,7 +58,7 @@ function App() {
     <div>
       <NewExpense onAddExpense={addExpenseHandler} />
 
-      <Expenses items={expenseslist} />
+      <Expenses items={expenseslist} onDelete={deleteHandaler} />
     </div>
   );
 }
